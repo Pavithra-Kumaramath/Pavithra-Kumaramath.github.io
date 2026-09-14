@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pavithra Kumaramath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#FBFAF7; --surface:#FFFFFF; --surface-2:#F4F1EB; --border:#E5E1D9;
+    --ink:#1B2A2C; --muted:#5C6B6C; --accent:#115E67; --accent-soft:#DDEBEC; --accent-ink:#0B3E46;
+    --font-display:'Fraunces',Georgia,'Times New Roman',serif;
+    --font-body:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1B1C; --surface:#142627; --surface-2:#17302F; --border:#274240;
+      --ink:#E9EEEC; --muted:#9DB1B0; --accent:#5CC1CC; --accent-soft:#173A3D; --accent-ink:#AEE6EB;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1B1C; --surface:#142627; --surface-2:#17302F; --border:#274240;
+    --ink:#E9EEEC; --muted:#9DB1B0; --accent:#5CC1CC; --accent-soft:#173A3D; --accent-ink:#AEE6EB;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.6;
+    -webkit-font-smoothing:antialiased;}
+  img{max-width:100%}
+  .wrap{max-width:860px;margin:0 auto;padding-inline:24px;padding-block:0;}
+  a{color:var(--accent);text-decoration:none;}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px;}
+
+  .topbar{height:5px;background:var(--accent);width:100%;}
+
+  header{padding-block:64px 40px;}
+  .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 18px;}
+  h1{font-family:var(--font-display);font-weight:500;font-size:clamp(2.6rem,7vw,4.2rem);
+    line-height:1.02;letter-spacing:-.01em;margin:0;text-wrap:balance;}
+  .tagline{font-family:var(--font-display);font-weight:400;font-style:italic;
+    font-size:clamp(1.15rem,3vw,1.5rem);color:var(--muted);margin:14px 0 0;text-wrap:balance;}
+  .lede{font-size:1.05rem;max-width:60ch;margin:26px 0 0;color:var(--ink);}
+
+  .contacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+  .chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);
+    border:1px solid var(--border);border-radius:999px;padding:9px 16px;font-size:.92rem;
+    color:var(--ink);transition:border-color .15s ease,transform .15s ease;}
+  .chip:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .chip .k{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 4px;}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 18px;}
+  .stat .num{font-family:var(--font-display);font-weight:600;font-size:1.9rem;line-height:1;color:var(--accent);
+    font-variant-numeric:tabular-nums;}
+  .stat .lbl{margin-top:9px;font-size:.82rem;color:var(--muted);line-height:1.35;}
+  @media (max-width:720px){.stats{grid-template-columns:repeat(2,1fr);}}
+
+  section{padding-block:38px;border-top:1px solid var(--border);}
+  .sec-head{font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 26px;}
+
+  .role{display:grid;grid-template-columns:1fr auto;gap:4px 20px;margin-bottom:26px;}
+  .role:last-child{margin-bottom:0;}
+  .role .title{font-family:var(--font-display);font-weight:500;font-size:1.2rem;color:var(--ink);margin:0;}
+  .role .org{color:var(--accent);font-weight:500;}
+  .role .when{font-family:var(--font-mono);font-size:.8rem;color:var(--muted);white-space:nowrap;padding-top:6px;
+    font-variant-numeric:tabular-nums;}
+  .role .desc{grid-column:1/-1;color:var(--muted);margin:8px 0 0;max-width:66ch;}
+  @media (max-width:560px){
+    .role{grid-template-columns:1fr;}
+    .role .when{padding-top:2px;}
+  }
+
+  .edu-item{margin-bottom:20px;}
+  .edu-item:last-child{margin-bottom:0;}
+  .edu-item .title{font-family:var(--font-display);font-weight:500;font-size:1.1rem;margin:0;}
+  .edu-item .meta{color:var(--muted);font-size:.94rem;margin-top:3px;}
+  .edu-item .meta .yr{font-family:var(--font-mono);font-size:.8rem;}
+
+  .tags{display:flex;flex-wrap:wrap;gap:9px;}
+  .tag{background:var(--accent-soft);color:var(--accent-ink);border-radius:8px;padding:7px 13px;font-size:.88rem;}
+  .skill-group{margin-bottom:22px;}
+  .skill-group:last-child{margin-bottom:0;}
+  .skill-group .glabel{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 11px;}
+
+  footer{padding-block:40px 72px;border-top:1px solid var(--border);}
+  .footer-name{font-family:var(--font-display);font-size:1.3rem;font-weight:500;margin:0 0 6px;}
+  .footer-links{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px;font-size:.95rem;}
+  .muted{color:var(--muted);}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+
+<div class="topbar"></div>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Business Development · Consulting · Client Solutions</p>
+    <h1>Pavithra Kumaramath</h1>
+    <p class="tagline">Turning complex client needs into practical commercial outcomes.</p>
+    <p class="lede">Commercial and client-solutions professional with 6+ years across SaaS, fintech, edtech and staffing. Computer Science graduate and MBA candidate in International Business &amp; Strategy at the University of Birmingham. I build relationships, run discovery, and help organisations move from a problem to a workable solution.</p>
+    <div class="contacts">
+      <a class="chip" href="mailto:ipavithrask@gmail.com"><span class="k">Email</span> ipavithrask@gmail.com</a>
+      <a class="chip" href="https://www.linkedin.com/in/pavithra-skofficial" target="_blank" rel="noopener"><span class="k">LinkedIn</span> /pavithra-skofficial</a>
+      <span class="chip"><span class="k">Based in</span> Leamington Spa, United Kingdom</span>
+    </div>
+  </header>
+
+  <section aria-label="Highlights">
+    <div class="stats">
+      <div class="stat"><div class="num">6+</div><div class="lbl">years in B2B commercial &amp; client-facing roles</div></div>
+      <div class="stat"><div class="num">500+</div><div class="lbl">structured client discovery interviews</div></div>
+      <div class="stat"><div class="num">65%</div><div class="lbl">conversion on a lead-gen function built 0&nbsp;to&nbsp;1</div></div>
+      <div class="stat"><div class="num">15</div><div class="lbl">team led · Best Manager, 2023</div></div>
+    </div>
+  </section>
+
+  <section aria-label="Experience">
+    <p class="sec-head">Experience</p>
+
+    <div class="role">
+      <p class="title">Enterprise Consultant <span class="org">· PhonePe</span></p>
+      <span class="when">Apr–Sep 2025</span>
+      <p class="desc">Managed enterprise and mid-market clients at India's largest digital payments platform. Led solution conversations with senior stakeholders and coordinated onboarding, issue resolution and service optimisation.</p>
+    </div>
+
+    <div class="role">
+      <p class="title">Key Account Manager <span class="org">· FTD Infocom</span></p>
+      <span class="when">Jul 2024–Mar 2025</span>
+      <p class="desc">Primary contact for clients across the US and Europe. Ran lead generation, demonstrations and renewals, contributing to negotiations that generated £82,000 above base sales value.</p>
+    </div>
+
+    <div class="role">
+      <p class="title">Business Development Manager <span class="org">· Jobox Hire</span></p>
+      <span class="when">Oct 2023–Jun 2024</span>
+      <p class="desc">Ran 500+ discovery interviews and on-site evaluations, then designed and embedded a new discovery and onboarding process from the ground up. Led a team of 8 in a fast-paced start-up.</p>
+    </div>
+
+    <div class="role">
+      <p class="title">Business Growth Manager <span class="org">· BYJU'S</span></p>
+      <span class="when">Aug 2019–Sep 2023</span>
+      <p class="desc">Progressed from individual contributor to leading a team of 15, trained 50+ colleagues, and delivered consistently against targets. Recognised as Best Manager in 2023.</p>
+    </div>
+  </section>
+
+  <section aria-label="Currently">
+    <p class="sec-head">Currently</p>
+    <p class="desc" style="max-width:66ch;margin:0;color:var(--ink);">Completing an MBA in International Business &amp; Strategy at the University of Birmingham, alongside a live company project with BT exploring where artificial intelligence supports, and creates friction within, Business Design workflows.</p>
+  </section>
+
+  <section aria-label="Education">
+    <p class="sec-head">Education</p>
+    <div class="edu-item">
+      <p class="title">MBA, International Business &amp; Strategy</p>
+      <p class="meta">University of Birmingham, United Kingdom · <span class="yr">2025–2026</span></p>
+    </div>
+    <div class="edu-item">
+      <p class="title">B.Tech, Computer &amp; Information Sciences</p>
+      <p class="meta">Visvesvaraya Technological University, India · <span class="yr">2015–2019</span></p>
+    </div>
+  </section>
+
+  <section aria-label="Skills">
+    <p class="sec-head">What I bring</p>
+    <div class="skill-group">
+      <p class="glabel">Strengths</p>
+      <div class="tags">
+        <span class="tag">Business development</span>
+        <span class="tag">Enterprise client management</span>
+        <span class="tag">Discovery &amp; requirements</span>
+        <span class="tag">Solution consulting</span>
+        <span class="tag">Stakeholder management</span>
+        <span class="tag">Commercial strategy</span>
+        <span class="tag">Workshops &amp; presentations</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="glabel">Systems</p>
+      <div class="tags">
+        <span class="tag">Salesforce</span>
+        <span class="tag">LeadSquared</span>
+        <span class="tag">Tableau</span>
+        <span class="tag">Microsoft 365</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="glabel">Domains</p>
+      <div class="tags">
+        <span class="tag">SaaS</span>
+        <span class="tag">Fintech</span>
+        <span class="tag">Edtech</span>
+        <span class="tag">Staffing</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-name">Pavithra Kumaramath</p>
+    <p class="muted">Open to business development, consulting and client-solutions roles in the UK.</p>
+    <div class="footer-links">
+      <a href="mailto:ipavithrask@gmail.com">ipavithrask@gmail.com</a>
+      <a href="https://www.linkedin.com/in/pavithra-skofficial" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
